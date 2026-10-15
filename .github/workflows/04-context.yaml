@@ -23,35 +23,4 @@ jobs: # stages
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: add variables to env
-        run: |
-          echo "course=github-actions" >> $GITHUB_ENV
-          echo "duration=5hours" >> $GITHUB_ENV
-
-      - name: access another step variables
-        run: |
-          echo "Course: $course"
-
-      - name: application version
-        id: version
-        run: |
-          echo "image-version=1.0.0" >> $GITHUB_OUTPUT
-
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJSON(job) }}
-        run: echo "$JOB_CONTEXT"
-
-  second-job:
-    runs-on: ubuntu-latest
-    needs: first-job
-    steps:
-      - name: access another job outputs
-        run: |
-          echo "Image version: ${{ needs.first-job.outputs.version }}"
-
-  third-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: parellel job
-        run: echo "this is parellel job"
+      
