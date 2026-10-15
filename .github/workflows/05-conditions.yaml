@@ -19,5 +19,5 @@ jobs: # stages
       - name: feature branch
         if: github.ref_name != 'main' 
         run: |
-          sleep 30
+          sleep 10
           echo "this is executed when feature branch updated"
