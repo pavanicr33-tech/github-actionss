@@ -1,0 +1,10 @@
+name: call another workflow
+on: 
+  push:
+    branches:
+        - 'main'
+jobs:
+  feature-pipeline:
+    uses: pavanicr33-tech/workflows/.github/workflows/node.js-eks-feature.yaml@main
+      project: 'roboshop' 
+      component: 'catalogue' 
